@@ -38,7 +38,7 @@ public class Atendimento implements Serializable{
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private EStatusAtendimento status;
+    private EStatusAtendimento status = EStatusAtendimento.AGENDADO;
 
     public Long getId() {
         return id;
