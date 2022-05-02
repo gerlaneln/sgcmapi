@@ -17,5 +17,5 @@ public interface ICrudController<T> {
     public ResponseEntity<T> update(T objeto);
 
     public ResponseEntity<?> delete(Long id);
-
+    
 }

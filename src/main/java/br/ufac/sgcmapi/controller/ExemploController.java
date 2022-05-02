@@ -16,13 +16,13 @@ public class ExemploController {
     private final AtendimentoRepository repo;
 
     @Autowired
-    public ExemploController(AtendimentoRepository repo){
+    public ExemploController(AtendimentoRepository repo) {
         this.repo = repo;
     }
 
     @RequestMapping("/")
     @ResponseBody
-    public String exemplo(){
+    public String exemplo() {
         List<Atendimento> atendimentos = repo.findAll();
         StringBuilder resultado = new StringBuilder();
         for (Atendimento item : atendimentos) {
@@ -36,5 +36,5 @@ public class ExemploController {
         }
         return "<pre>" + resultado.toString() + "</pre>";
     }
-
+    
 }
