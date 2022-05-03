@@ -5,7 +5,7 @@ import java.util.List;
 public interface ICrudService<T> {
 
     public List<T> getAll();
-    
+
     public T getById(Long id);
 
     public List<T> getByAll(String termoBusca);

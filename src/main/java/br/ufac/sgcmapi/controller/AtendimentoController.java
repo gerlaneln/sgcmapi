@@ -1,5 +1,6 @@
 package br.ufac.sgcmapi.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,12 @@ public class AtendimentoController implements ICrudController<Atendimento> {
     public ResponseEntity<Atendimento> updateStatus(@PathVariable("id") Long id) {
         Atendimento registro = servico.updateStatus(id);
         return new ResponseEntity<>(registro, HttpStatus.OK);
+    }
+
+    @GetMapping("/horarios/profissional/{profissional_id}/data/{data}")
+    public ResponseEntity<List<String>> getHorarios(@PathVariable("profissional_id") Long profissional_id, @PathVariable("data") Date data) {
+        List<String> registros = servico.getHorarios(profissional_id, data);
+        return new ResponseEntity<>(registros, HttpStatus.OK);
     }
     
 }

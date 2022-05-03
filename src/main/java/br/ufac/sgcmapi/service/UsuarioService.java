@@ -18,20 +18,18 @@ public class UsuarioService implements ICrudService<Usuario> {
         this.repo = repo;
     }
 
-    private Usuario removeSenha(Usuario usuario){
+    private Usuario removeSenha(Usuario usuario) {
         usuario.setSenha(null);
         return usuario;
     }
 
-    private List<Usuario> removeSenha(List<Usuario> usuarios){
+    private List<Usuario> removeSenha(List<Usuario> usuarios) {
         usuarios.forEach(item -> removeSenha(item));
         return usuarios;
     }
 
-    
-    public Usuario getByNomeUsuario(String nomeUsuario){
+    public Usuario getByNomeUsuario(String nomeUsuario) {
         Usuario usuario = repo.findByNomeUsuario(nomeUsuario);
-        // usuario = removeSenha(usuario);
         return usuario;
     }
 
@@ -58,10 +56,10 @@ public class UsuarioService implements ICrudService<Usuario> {
 
     @Override
     public Usuario save(Usuario objeto) {
-        if (objeto.getSenha() == null){
+        if (objeto.getSenha() == null) {
             Long id = objeto.getId();
             Usuario usuario = repo.findById(id).orElse(null);
-            if (usuario != null){
+            if (usuario != null) {
                 objeto.setSenha(usuario.getSenha(), false);
             }
         }
