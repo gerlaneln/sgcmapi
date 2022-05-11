@@ -83,7 +83,7 @@ public class AtendimentoController implements ICrudController<Atendimento> {
         return new ResponseEntity<>(registros, HttpStatus.OK);
     }
 
-    @GetMapping("/atendimentos/profissional/{id}")
+    @GetMapping("/filtrar/profissional/{id}")
     public ResponseEntity<List<Atendimento>> getAtendimentoProfissional(@PathVariable("id") Long profissional_id){
         List<Atendimento> registros = servico.getAtendimentoProfissional(profissional_id);
         return new ResponseEntity<>(registros, HttpStatus.OK);

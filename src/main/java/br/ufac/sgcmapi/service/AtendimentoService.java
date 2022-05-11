@@ -68,11 +68,6 @@ public class AtendimentoService implements ICrudService<Atendimento> {
         return registros;
     }
 
-    // public List<Atendimento> getAtendimentoProfissional(Long profissional_id){
-    //     List<Atendimento> atendimentos = repo.findProfissional(profissional_id);
-    //     return atendimentos;
-    // }
-
     public List<Atendimento> getAtendimentoProfissional(Long profissional_id){
         Profissional profissional = servicoProfissional.getById(profissional_id);
         List<Atendimento> atendimentos = repo.findByProfissional(profissional);
