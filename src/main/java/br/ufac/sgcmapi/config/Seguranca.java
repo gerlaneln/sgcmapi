@@ -22,12 +22,12 @@ public class Seguranca extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
-        http.authorizeRequests().anyRequest().permitAll();
-        // http.httpBasic();
-        // http.authorizeRequests().antMatchers("/config/**").hasRole("ADMIN");
-        // http.authorizeRequests().anyRequest().authenticated();
-        // http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
-        // http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK));
+        // http.authorizeRequests().anyRequest().permitAll();
+        http.cors();
+        http.authorizeRequests().antMatchers("/config/**").hasRole("ADMIN");
+        http.authorizeRequests().anyRequest().authenticated();
+        http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+        http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK));
         http.csrf().disable();
     }
 
