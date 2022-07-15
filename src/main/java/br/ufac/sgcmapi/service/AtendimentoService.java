@@ -58,14 +58,9 @@ public class AtendimentoService implements ICrudService<Atendimento> {
         return registro;
     }
 
-    public List<String> getHorarios(Long profissional_id, Date data) {
-        Profissional profissional = servicoProfissional.getById(profissional_id);
-        List<Atendimento> atendimentos = repo.findByProfissionalAndData(profissional, data);
-        List<String> registros = atendimentos.stream()
-                                             .filter(item -> item.getStatus() != EStatusAtendimento.CANCELADO)
-                                             .map(item -> item.getHora().toString())
-                                             .collect(Collectors.toList());
-        return registros;
+    public List<Atendimento> findHorarios(Date data, Long id){
+        List<Atendimento> atendimentos = repo.findHorarios(data, id);
+        return atendimentos;
     }
 
     public List<Atendimento> getAtendimentoProfissional(Long profissional_id){
