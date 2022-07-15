@@ -22,6 +22,13 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
         " OR u.nome LIKE %?1%" +
         " OR a.status LIKE %?1%")
     List<Atendimento> findByAll(String termoBusca);
+
+    @Query(
+        "SELECT a FROM Atendimento a"+
+        " WHERE a.data = ?1 AND"+
+        " profissional_id = ?2"
+    )
+    List<Atendimento> findHorarios(Date data, Long id);
     
     List<Atendimento> findByProfissional(Profissional profissional);
 

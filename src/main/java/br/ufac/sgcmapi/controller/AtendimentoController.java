@@ -1,6 +1,8 @@
 package br.ufac.sgcmapi.controller;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,10 +79,14 @@ public class AtendimentoController implements ICrudController<Atendimento> {
         return new ResponseEntity<>(registro, HttpStatus.OK);
     }
 
-    @GetMapping("/horarios/profissional/{profissional_id}/data/{data}")
-    public ResponseEntity<List<String>> getHorarios(@PathVariable("profissional_id") Long profissional_id, @PathVariable("data") Date data) {
-        List<String> registros = servico.getHorarios(profissional_id, data);
-        return new ResponseEntity<>(registros, HttpStatus.OK);
+    @GetMapping("/hora/{data}/{id}")
+    public ResponseEntity<List<Time>> findHorarios(@PathVariable("data") Date data, @PathVariable("id") Long id) {
+        List<Time> horarios= new ArrayList<>();
+        List<Atendimento> registros = servico.findHorarios(data, id);
+        for (Atendimento atendimento : registros) {
+            horarios.add(atendimento.getHora());
+        }
+        return new ResponseEntity<>(horarios, HttpStatus.OK);
     }
 
     @GetMapping("/filtrar/profissional/{id}")
