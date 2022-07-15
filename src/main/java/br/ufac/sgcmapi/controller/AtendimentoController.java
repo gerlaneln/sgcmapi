@@ -79,7 +79,7 @@ public class AtendimentoController implements ICrudController<Atendimento> {
         return new ResponseEntity<>(registro, HttpStatus.OK);
     }
 
-    @GetMapping("/hora/{data}/{id}")
+    @GetMapping("/hora/{data}/id/{id}")
     public ResponseEntity<List<Time>> findHorarios(@PathVariable("data") Date data, @PathVariable("id") Long id) {
         List<Time> horarios= new ArrayList<>();
         List<Atendimento> registros = servico.findHorarios(data, id);
